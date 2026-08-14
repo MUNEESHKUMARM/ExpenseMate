@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "39433044426",
+    "project_id": "expensemate-27cb5",
+    "storage_bucket": "expensemate-27cb5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39433044426:android:801e7a259dbe8b7b7fcf33",
+        "android_client_info": {
+          "package_name": "com.example.my_first_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39433044426-fflpi747le8ginsmb5ti27prq7ba4j8l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_first_app",
+            "certificate_hash": "4710b25abb6f0182d13d8bba56bd60f8080e1ba6"
+          }
+        },
+        {
+          "client_id": "39433044426-84prl840jffrn1e9qlv2ajl65ft53ut2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcdyxfJGeDzcY2SFB3PAO4Kar08kNWKjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39433044426-84prl840jffrn1e9qlv2ajl65ft53ut2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
