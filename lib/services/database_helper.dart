@@ -62,7 +62,8 @@ class DatabaseHelper {
     if (oldVersion < 2) {
       // Add firestoreId column for cloud sync
       await db.execute(
-          'ALTER TABLE $_tableName ADD COLUMN $_columnFirestoreId TEXT');
+        'ALTER TABLE $_tableName ADD COLUMN $_columnFirestoreId TEXT',
+      );
     }
   }
 
@@ -79,10 +80,7 @@ class DatabaseHelper {
   /// Fetch all transactions ordered by date (newest first)
   Future<List<TransactionModel>> getTransactions() async {
     final db = await database;
-    final maps = await db.query(
-      _tableName,
-      orderBy: '$_columnDate DESC',
-    );
+    final maps = await db.query(_tableName, orderBy: '$_columnDate DESC');
     return maps.map((map) => TransactionModel.fromMap(map)).toList();
   }
 
@@ -99,7 +97,9 @@ class DatabaseHelper {
   }
 
   /// Fetch transactions filtered by category
-  Future<List<TransactionModel>> getTransactionsByCategory(String category) async {
+  Future<List<TransactionModel>> getTransactionsByCategory(
+    String category,
+  ) async {
     final db = await database;
     final maps = await db.query(
       _tableName,
@@ -176,13 +176,16 @@ class DatabaseHelper {
   /// Get monthly totals for a specific type and year
   Future<Map<int, double>> getMonthlyTotals(String type, int year) async {
     final db = await database;
-    final results = await db.rawQuery('''
+    final results = await db.rawQuery(
+      '''
       SELECT strftime('%m', $_columnDate) as month, 
              SUM($_columnAmount) as total 
       FROM $_tableName 
       WHERE $_columnType = ? AND strftime('%Y', $_columnDate) = ?
       GROUP BY month
-    ''', [type, year.toString()]);
+    ''',
+      [type, year.toString()],
+    );
 
     final Map<int, double> monthlyTotals = {};
     for (final row in results) {
@@ -191,7 +194,6 @@ class DatabaseHelper {
     }
     return monthlyTotals;
   }
-
 
   /// Close the database
   Future<void> close() async {
